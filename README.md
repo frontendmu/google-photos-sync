@@ -1,33 +1,49 @@
 # Sync Photos from Front-end Coders Google Albums
 
-The repo is the storage for our event albums. 
-It is meant to be consumed by [Front-End-Coders-Mauritius/frontendmu-astro](https://github.com/Front-End-Coders-Mauritius/frontendmu-astro) for frontend.mu
+Storage for our event albums, consumed by [frontendmu-astro](https://github.com/Front-End-Coders-Mauritius/frontendmu-astro) for frontend.mu
 
-The script is run locally and maintained by [sandeep@ramgolam.com](https://github.com/MrSunshyne)
+Maintained by [@MrSunshyne](https://github.com/MrSunshyne)
 
-# MAKE SURE YOU HAVE `timerliner.toml` in the root directory. 
+## Quick Start: Adding New Albums
 
-It should contain: 
+1. Download album from Google Photos (as zip)
+2. Place zip in `timeliner_repo/downloaded_albums/`
+3. Run:
+   ```bash
+   make process
+   ```
 
-```
-[oauth2.providers.google]
-client_id = "xxx"
-client_secret = "xxx"
-auth_url = "https://accounts.google.com/o/oauth2/auth"
-token_url = "https://accounts.google.com/o/oauth2/token"
-```
+That's it! The `index.json` is updated automatically.
 
-## Commands 
+## Commands
 
-`make init` get all photos from all albums in the fec google account
+| Command | Description |
+|---------|-------------|
+| `make process` | Process new album zips → updates `index.json` |
+| `make process-force` | Reprocess all images (after changing quality settings) |
+| `make json` | Regenerate index from legacy timeliner database |
 
-`make sync` get latest photos
+## How It Works
 
-`make json` run the go utility by [@mgjules](https://github.com/mgjules) to create an index.json of all the photos grouped by Album Name
-	
-## What should I do to sync photos? 
+1. **Zips are extracted** to `timeliner_repo/extracted_albums/` (cached)
+2. **Images are resized** (1920x1080 max) and converted to webp
+3. **Output saved** to `timeliner_repo/processed/downloaded/<album>/`
+4. **index.json** is updated with album → photo paths mapping
+
+## Setup (First Time)
 
 ```bash
-make sync
-make json 
+npm install
 ```
+
+## Legacy Commands (timeliner - deprecated)
+
+These require `timeliner.toml` with OAuth credentials:
+
+| Command | Description |
+|---------|-------------|
+| `make init` | Get all photos from Google account |
+| `make sync` | Get latest photos |
+| `make auth` | Re-authenticate |
+
+> Note: Google Photos API access was restricted in March 2025. Manual album downloads are now required.

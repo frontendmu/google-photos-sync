@@ -1,0 +1,32 @@
+{
+  "name": "google-photos-sync",
+  "version": "1.0.0",
+  "description": "The repo is the storage for our event albums.  It is meant to be consumed by [Front-End-Coders-Mauritius/frontendmu-astro](https://github.com/Front-End-Coders-Mauritius/frontendmu-astro) for frontend.mu",
+  "main": "index.js",
+  "scripts": {
+    "process-downloads": "tsx process-downloads.ts",
+    "process-downloads:force": "tsx process-downloads.ts --force",
+    "process-downloads:extract": "tsx process-downloads.ts --extract",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Front-End-Coders-Mauritius/google-photos-sync.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Front-End-Coders-Mauritius/google-photos-sync/issues"
+  },
+  "homepage": "https://github.com/Front-End-Coders-Mauritius/google-photos-sync#readme",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "sharp": "^0.34.5"
+  }
+}

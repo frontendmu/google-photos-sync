@@ -3,3 +3,7 @@ timeliner.toml
 index.db
 .bin
 timeliner_repo/data
+timeliner_repo/downloaded_albums
+node_modules
+photos_token.json
+picker_token.json
